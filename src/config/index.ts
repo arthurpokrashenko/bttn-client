@@ -1,3 +1,3 @@
 export default {
-  wsConnectionLink: 'ws://localhost:8080',
+  wsConnectionLink: 'ws://localhost:8081',
 };
