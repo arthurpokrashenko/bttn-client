@@ -1,3 +1,3 @@
 export default {
-  wsConnectionLink: 'ws://localhost:8081',
+  wsConnectionLink: process.env.WS_CONNECTION || 'ws://localhost:8081',
 };
