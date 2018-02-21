@@ -2,7 +2,6 @@
   "name": "revolut",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://arthurpokrashenko.github.io/rvlt",
   "dependencies": {
     "@blueprintjs/core": "^1.35.2",
     "accounting": "^0.4.1",
