@@ -1,12 +1,10 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import balanceReducer from './balance';
-import exchangeReducer from './exchange';
-import ratesReducer from './rates';
+import connectionReducer from './connection';
+import hallOfFameReducer from './hall_of_fame';
 
 export default combineReducers({
   routing: routerReducer,
-  balance: balanceReducer,
-  exchange: exchangeReducer,
-  rates: ratesReducer,
+  hallOfFame: hallOfFameReducer,
+  connection: connectionReducer,
 });

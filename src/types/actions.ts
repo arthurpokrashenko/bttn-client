@@ -1,33 +1,24 @@
 import {
-  IChangeSourceAmountAction,
-  IChangeSourceCurrencyAction,
-  IChangeSourceCurrencyFailAction,
-  IChangeSourceCurrencySuccessAction,
-  IChangeTargetAmountAction,
-  IChangeTargetCurrencyAction,
-  IChangeTargetCurrencyFailAction,
-  IChangeTargetCurrencySuccessAction,
-  IExchangeAction,
-  IExchangeFailAction,
-  IExchangeSuccessAction,
-} from './../actions/exchange';
-import {
-  IUpdateRatesAction,
-  IUpdateRatesFailAction,
-  IUpdateRatesSuccessAction,
-} from './../actions/rates';
+  ICloseCashRegisterNumberModalAction,
+  ISetCashRegisterNumberAction,
+  IShowCashRegisterNumberModalAction,
+} from './../actions/hall_of_fame';
 
-export type TAction = IUpdateRatesAction |
-  IUpdateRatesSuccessAction |
-  IUpdateRatesFailAction |
-  IChangeSourceCurrencyAction |
-  IChangeSourceCurrencyFailAction |
-  IChangeSourceCurrencySuccessAction |
-  IChangeTargetCurrencyAction |
-  IChangeTargetCurrencyFailAction |
-  IChangeTargetCurrencySuccessAction |
-  IChangeSourceAmountAction |
-  IChangeTargetAmountAction |
-  IExchangeAction |
-  IExchangeFailAction |
-  IExchangeSuccessAction;
+import {
+  IConnectToSocketAction,
+  IConnectToSocketFailAction,
+  IConnectToSocketSuccessAction,
+  ILastLoserReceivedAction,
+  ILastWinnerReceivedAction,
+  ILastWinnersListAction,
+} from './../actions/connection';
+
+export type TAction = IShowCashRegisterNumberModalAction |
+  ISetCashRegisterNumberAction |
+  ICloseCashRegisterNumberModalAction |
+  IConnectToSocketAction |
+  IConnectToSocketFailAction |
+  IConnectToSocketSuccessAction |
+  ILastLoserReceivedAction |
+  ILastWinnerReceivedAction |
+  ILastWinnersListAction;

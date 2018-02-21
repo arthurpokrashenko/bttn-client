@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+}
+
+.text {
+  font-size: 5vw;
+}
+
+.count {
+  font-size: 7vw;
+}
+
+.right {
+  flex: 1;
+  background-color: gray;
+}

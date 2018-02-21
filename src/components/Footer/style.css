@@ -1,0 +1,8 @@
+.connection {}
+
+.connectionSuccess {
+  color: green;
+}
+.connectionFail {
+  color: red;
+}

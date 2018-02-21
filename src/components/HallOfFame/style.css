@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.connection {}
+
+.connectionSuccess {
+  color: green;
+}
+.connectionFail {
+  color: red;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroText {
+  font-size: 10vw;
+}
