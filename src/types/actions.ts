@@ -10,6 +10,7 @@ import {
   IConnectToSocketSuccessAction,
   ILastLoserReceivedAction,
   ILastWinnerReceivedAction,
+  ILastWinnersCountTodayAction,
   ILastWinnersListAction,
 } from './../actions/connection';
 
@@ -21,4 +22,5 @@ export type TAction = IShowCashRegisterNumberModalAction |
   IConnectToSocketSuccessAction |
   ILastLoserReceivedAction |
   ILastWinnerReceivedAction |
-  ILastWinnersListAction;
+  ILastWinnersListAction |
+  ILastWinnersCountTodayAction;

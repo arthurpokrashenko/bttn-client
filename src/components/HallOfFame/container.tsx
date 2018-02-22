@@ -12,6 +12,7 @@ export default connect(
   (state: IStore) => ({
     isConnected: state.connection.isConnected,
     lastWinner: state.hallOfFame.lastWinner,
+    winnersCountToday: state.hallOfFame.winnersCountToday,
   }),
   (dispatch: Dispatch<IStore>) => ({
     onShowCashRegisterModal: (value: number) => dispatch(showCashRegisterNumberModal()),

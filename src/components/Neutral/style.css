@@ -1,6 +1,9 @@
 .container {
+  font-family: 'Obi';
+  font-weight: 900;
+  color: #f47920;
+  height: 100vh;
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
 }
@@ -8,7 +11,7 @@
 .inner {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 70vw;
 }
 
 .logo {
@@ -16,7 +19,10 @@
 }
 
 .info {
-  font-size: 8vw;
+  font-size: 6.7vw;
+  line-height: 6.7vw;
+  margin-top: 4vw;
   font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
 }

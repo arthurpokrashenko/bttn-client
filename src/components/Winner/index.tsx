@@ -17,9 +17,7 @@ class Winner extends Component<IWinnerProps, {}> {
             <div className={style.text}>Счастливый<br/>покупатель<br/>на кассе</div>
             <div className={style.cashRegister}>№{cashRegister}</div>
           </div>
-          <div className={style.right}>
-            right
-          </div>
+          <div className={style.right}/>
         </div>
       </div>
     );

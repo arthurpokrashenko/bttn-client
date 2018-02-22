@@ -6,6 +6,7 @@ export interface IStore {
       cashRegister: number;
       eventId: string;
     };
+    winnersCountToday: number;
   };
   connection: {
     isConnected: boolean;

@@ -7,6 +7,7 @@ const initialState = {
     cashRegister: number;
     eventId: string;
   }[],
+  winnersCountToday: null,
 };
 
 export default (state = initialState, action: TAction) => {
@@ -38,6 +39,11 @@ export default (state = initialState, action: TAction) => {
       return {
         ...state,
         winners: action.payload.winners.reverse(),
+      };
+    case 'server/WINNERS_COUNT_TODAY':
+      return {
+        ...state,
+        winnersCountToday: action.payload.count,
       };
     default:
       return state;

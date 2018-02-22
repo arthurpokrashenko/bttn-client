@@ -16,6 +16,7 @@ export interface IHallOfFameProps {
     cashRegister: number;
     eventId: string;
   };
+  winnersCountToday: number;
   onShowCashRegisterModal: () => void;
   onConnectToSocket: () => void;
 }
@@ -42,7 +43,7 @@ class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
   public render() {
     const { isConnected, lastWinner } = this.props;
     const { isWinnerVisible } = this.state;
-    console.log(isWinnerVisible);
+
     return (
       <div className={style.container}>
         {!isWinnerVisible && this.renderPromo()}
@@ -65,7 +66,6 @@ class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
   }
 
   public componentWillReceiveProps(nextProps: IHallOfFameProps) {
-    console.log('props', nextProps);
     if (this.props.lastWinner.eventId !== nextProps.lastWinner.eventId) {
       this.setState({ isWinnerVisible: true }, () => {
         setTimeout(() => {
@@ -76,10 +76,11 @@ class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
   }
 
   private renderPromo() {
+    const { winnersCountToday } = this.props;
     const { isWinnersTodayVisible } = this.state;
 
     if (isWinnersTodayVisible) {
-      return <WinnersToday count={10}/>;
+      return <WinnersToday count={winnersCountToday}/>;
     }
 
     return (

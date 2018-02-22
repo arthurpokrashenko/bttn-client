@@ -50,6 +50,13 @@ export interface ILastWinnersListAction {
   };
 }
 
+export interface ILastWinnersCountTodayAction {
+  type: 'server/WINNERS_COUNT_TODAY';
+  payload: {
+    count: number;
+  };
+}
+
 export function connectToSocket() {
   return (dispatch: Dispatch<IStore>) => {
     dispatch({ type: CONNECT_TO_SOCKET });

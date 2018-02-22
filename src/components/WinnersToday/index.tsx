@@ -17,9 +17,7 @@ class WinnersToday extends Component<IWinnersTodayProps, {}> {
             <div className={style.text}>Количество<br/>победителей<br/>сегодня</div>
             <div className={style.count}>{count}</div>
           </div>
-          <div className={style.right}>
-            right
-          </div>
+          <div className={style.right}/>
         </div>
       </div>
     );
