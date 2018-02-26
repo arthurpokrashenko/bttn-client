@@ -5,10 +5,13 @@ import { IStore } from './../store/IStore';
 export const CONNECT_TO_SOCKET = 'ws/CONNECT_TO_SOCKET';
 export const CONNECT_TO_SOCKET_FAIL = 'ws/CONNECT_TO_SOCKET_FAIL';
 export const CONNECT_TO_SOCKET_SUCCESS = 'ws/CONNECT_TO_SOCKET_SUCCESS';
+export const CONNECT_TO_SOCKET_CLOSED = 'ws/CONNECT_TO_SOCKET_CLOSED';
 export const MESSAGE_RECEIVED = 'ws/MESSAGE_RECEIVED';
 
-interface IWindowExtended extends Window {
+const RECONNECTION_INTERVAL = 5 * 1000;
+export interface IWindowExtended extends Window {
   socket: WebSocket;
+  connectionTimer: NodeJS.Timer;
 }
 
 export interface IConnectToSocketAction {
@@ -21,6 +24,10 @@ export interface IConnectToSocketFailAction {
 
 export interface IConnectToSocketSuccessAction {
   type: 'ws/CONNECT_TO_SOCKET_SUCCESS';
+}
+
+export interface IConnectToSocketClosedAction {
+  type: 'ws/CONNECT_TO_SOCKET_CLOSED';
 }
 
 export interface ILastWinnerReceivedAction {
@@ -65,6 +72,13 @@ export function connectToSocket() {
     // (window as IWindowExtended).socket.binaryType = 'arraybuffer';
     (window as IWindowExtended).socket.onopen = () => {
       dispatch({ type: CONNECT_TO_SOCKET_SUCCESS });
+      clearInterval((window as IWindowExtended).connectionTimer);
+    };
+    (window as IWindowExtended).socket.onclose = () => {
+      dispatch({ type: CONNECT_TO_SOCKET_CLOSED });
+      (window as IWindowExtended).connectionTimer = setTimeout(() => {
+        dispatch(connectToSocket());
+      }, RECONNECTION_INTERVAL);
     };
     (window as IWindowExtended).socket.onmessage = (event) => {
       if (event.data) {
@@ -77,7 +91,10 @@ export function connectToSocket() {
       }
     };
     (window as IWindowExtended).socket.onerror = (error) => {
-      console.log(error);
+      clearInterval((window as IWindowExtended).connectionTimer);
+      (window as IWindowExtended).connectionTimer = setTimeout(() => {
+        dispatch(connectToSocket());
+      }, RECONNECTION_INTERVAL);
       dispatch({ type: CONNECT_TO_SOCKET_FAIL });
     };
   };

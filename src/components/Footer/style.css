@@ -1,4 +1,6 @@
-.connection {}
+.connection {
+  margin-right: 20px;
+}
 
 .connectionSuccess {
   color: green;

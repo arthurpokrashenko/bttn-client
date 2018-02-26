@@ -1,8 +1,7 @@
 import { TAction } from '../types/actions';
 
 const initialState = {
-  cashRegisterNumber: localStorage.getItem('cashRegisterNumber') || null,
-  isCashRegisterNumberModalOpen: false,
+  isOptionsModalOpen: false,
   lastWinner: {} as {
     cashRegister: number;
     eventId: string;
@@ -12,20 +11,15 @@ const initialState = {
 
 export default (state = initialState, action: TAction) => {
   switch (action.type) {
-    case 'hallOfFame/SHOW_CASH_REGISTER_NUMBER_MODAL':
+    case 'hallOfFame/SHOW_OPTIONS_MODAL':
       return {
         ...state,
-        isCashRegisterNumberModalOpen: true,
+        isOptionsModalOpen: true,
       };
-    case 'hallOfFame/CLOSE_CASH_REGISTER_NUMBER_MODAL':
+    case 'hallOfFame/CLOSE_OPTIONS_MODAL':
       return {
         ...state,
-        isCashRegisterNumberModalOpen: false,
-      };
-    case 'hallOfFame/SET_CASH_REGISTER_NUMBER':
-      return {
-        ...state,
-        cashRegisterNumber: action.value,
+        isOptionsModalOpen: false,
       };
     case 'server/LAST_WINNER':
       return {

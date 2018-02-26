@@ -1,12 +1,12 @@
 import { Button, Icon, Position, Tooltip } from '@blueprintjs/core';
 import React, { Component, CSSProperties } from 'react';
 import { mergeStyles } from '../../utils/style';
+import OptionsModalContainer from '../OptionsModal/container';
 const style = require('./style.css');
 
 export interface IFooterProps {
-  cashRegisterNumber: number;
   isConnected: boolean;
-  onShowCashRegisterModal: () => void;
+  onShowOptionsModal: () => void;
   onConnectToSocket: () => void;
 }
 
@@ -14,7 +14,7 @@ export interface IHallOfFameState {}
 
 class Footer extends Component<IFooterProps, {}> {
   public render() {
-    const { isConnected, onShowCashRegisterModal } = this.props;
+    const { isConnected, onShowOptionsModal } = this.props;
 
     return (
       <div className={style.container}>
@@ -25,13 +25,16 @@ class Footer extends Component<IFooterProps, {}> {
         >
           <Icon
             iconName="offline"
+            iconSize={20}
             {...mergeStyles(style.connection, isConnected ? style.connectionSuccess : style.connectionFail)}
           />
         </Tooltip>
         <Icon
           iconName="cog"
-          onClick={() => onShowCashRegisterModal()}
+          iconSize={20}
+          onClick={() => onShowOptionsModal()}
         />
+        <OptionsModalContainer/>
       </div>
     );
   }

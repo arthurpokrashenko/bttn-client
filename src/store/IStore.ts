@@ -1,7 +1,6 @@
 export interface IStore {
   hallOfFame: {
-    cashRegisterNumber?: number;
-    isCashRegisterNumberModalOpen: boolean;
+    isOptionsModalOpen: boolean;
     lastWinner?: {
       cashRegister: number;
       eventId: string;

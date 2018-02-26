@@ -1,15 +1,16 @@
-import { Button, Dialog, Intent, NumericInput } from '@blueprintjs/core';
+import { Button, Dialog, Intent, Label, NumericInput } from '@blueprintjs/core';
 import React, { Component, CSSProperties } from 'react';
+import { IOptions } from '../../actions/hall_of_fame';
 const style = require('./style.css');
 
 export interface IOptionsModalProps {
   isOpen: boolean;
-  onSetCashRegisterNumber: (value?: number) => void;
   onClose: () => void;
+  onSaveOptions: (options: IOptions) => void;
 }
 
 export interface IOptionsModalState {
-  value?: number;
+  winnerDivider?: number;
 }
 
 class OptionsModal extends Component<IOptionsModalProps, IOptionsModalState> {
@@ -17,7 +18,7 @@ class OptionsModal extends Component<IOptionsModalProps, IOptionsModalState> {
     super(props);
 
     this.state = {
-      value: undefined,
+      winnerDivider: undefined,
     };
   }
 
@@ -28,22 +29,25 @@ class OptionsModal extends Component<IOptionsModalProps, IOptionsModalState> {
       <Dialog
         iconName="shop"
         isOpen={isOpen}
-        title="Укажите номер кассы"
+        title="Настройки"
         onClose={() => this.props.onClose()}
         className={style.dialog}
       >
         <div className="pt-dialog-body">
-          <NumericInput
-            min={0}
-            large={true}
-            value={this.state.value}
-            className="pt-fill"
-            onValueChange={(value) => this.setState({ value })}
-          />
+          <Label text="Порядок победителей">
+            <NumericInput
+              min={0}
+              value={this.state.winnerDivider}
+              onValueChange={(value) => this.setState({ winnerDivider: value })}
+            />
+          </Label>
         </div>
         <div className="pt-dialog-footer">
             <div className="pt-dialog-footer-actions">
-                <Button text="Отменить" />
+                <Button
+                  text="Отменить"
+                  onClick={() => this.props.onClose()}
+                />
                 <Button
                     intent={Intent.PRIMARY}
                     onClick={() => this.handleSaveClicked()}
@@ -56,10 +60,9 @@ class OptionsModal extends Component<IOptionsModalProps, IOptionsModalState> {
   }
 
   private handleSaveClicked() {
-    const { value } = this.state;
-    const { onSetCashRegisterNumber, onClose } = this.props;
-
-    onSetCashRegisterNumber(value);
+    const { winnerDivider } = this.state;
+    const { onClose, onSaveOptions } = this.props;
+    onSaveOptions(this.state);
     onClose();
   }
 }

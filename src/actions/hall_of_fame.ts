@@ -1,42 +1,41 @@
 import { Dispatch } from 'redux';
 import { IStore } from './../store/IStore';
+import { IWindowExtended } from './connection';
 
-export const SHOW_CASH_REGISTER_NUMBER_MODAL = 'hallOfFame/SHOW_CASH_REGISTER_NUMBER_MODAL';
-export const CLOSE_CASH_REGISTER_NUMBER_MODAL = 'hallOfFame/CLOSE_CASH_REGISTER_NUMBER_MODAL';
-export const SET_CASH_REGISTER_NUMBER = 'hallOfFame/SET_CASH_REGISTER_NUMBER';
+export const SHOW_OPTIONS_MODAL = 'hallOfFame/SHOW_OPTIONS_MODAL';
+export const CLOSE_OPTIONS_MODAL = 'hallOfFame/CLOSE_OPTIONS_MODAL';
+export const SAVE_OPTIONS = 'hallOfFame/SAVE_OPTIONS';
 
-export interface IShowCashRegisterNumberModalAction {
-  type: 'hallOfFame/SHOW_CASH_REGISTER_NUMBER_MODAL';
+export interface IShowOptionsModalAction {
+  type: 'hallOfFame/SHOW_OPTIONS_MODAL';
 }
 
-export interface ICloseCashRegisterNumberModalAction {
-  type: 'hallOfFame/CLOSE_CASH_REGISTER_NUMBER_MODAL';
+export interface ICloseOptionsModalAction {
+  type: 'hallOfFame/CLOSE_OPTIONS_MODAL';
 }
 
-export interface ISetCashRegisterNumberAction {
-  type: 'hallOfFame/SET_CASH_REGISTER_NUMBER';
-  value: number;
-}
-
-export function showCashRegisterNumberModal() {
+export function showOptionsModal() {
   return (dispatch: Dispatch<IStore>) => {
-    dispatch({ type: SHOW_CASH_REGISTER_NUMBER_MODAL });
+    dispatch({ type: SHOW_OPTIONS_MODAL });
   };
 }
 
-export function closeCashRegisterNumberModal() {
+export interface IOptions {
+  winnerDivider?: number;
+}
+
+export function saveOptions(options: IOptions) {
+  (window as IWindowExtended).socket.send(
+    JSON.stringify({type: 'SAVE_OPTIONS', options}),
+  );
+
   return (dispatch: Dispatch<IStore>) => {
-    dispatch({ type: CLOSE_CASH_REGISTER_NUMBER_MODAL });
+    dispatch({ type: SAVE_OPTIONS, options });
   };
 }
 
-export function setCashRegisterNumber(value?: number) {
+export function closeOptionsModal() {
   return (dispatch: Dispatch<IStore>) => {
-    localStorage.setItem('cashRegisterNumber', String(value || ''));
-
-    dispatch({
-      type: SET_CASH_REGISTER_NUMBER,
-      value,
-    });
+    dispatch({ type: CLOSE_OPTIONS_MODAL });
   };
 }

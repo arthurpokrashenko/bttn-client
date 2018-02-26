@@ -3,9 +3,9 @@ import React, { Component, CSSProperties } from 'react';
 import { mergeStyles } from '../../utils/style';
 import FooterContainer from '../Footer/container';
 import Neutral from '../Neutral';
+// import PreviousWinners from '../PreviousWinners';
 import Winner from '../Winner';
 import WinnersToday from '../WinnersToday';
-// import PreviousWinners from '../PreviousWinners';
 
 const style = require('./style.css');
 
@@ -17,7 +17,7 @@ export interface IHallOfFameProps {
     eventId: string;
   };
   winnersCountToday: number;
-  onShowCashRegisterModal: () => void;
+  onShowOptionsModal: () => void;
   onConnectToSocket: () => void;
 }
 
@@ -48,6 +48,9 @@ class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
       <div className={style.container}>
         {!isWinnerVisible && this.renderPromo()}
         {isWinnerVisible && <Winner cashRegister={lastWinner.cashRegister}/>}
+        <div className={style.footer}>
+          <FooterContainer/>
+        </div>
       </div>
     );
   }
@@ -60,9 +63,6 @@ class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
     this.promoRotationTimer = setInterval(() => {
       this.setState({ isWinnersTodayVisible: !this.state.isWinnersTodayVisible });
     }, PROMO_ROTATION_INTERVAL);
-    // if (!cashRegisterNumber) {
-    //   onShowCashRegisterModal();
-    // }
   }
 
   public componentWillReceiveProps(nextProps: IHallOfFameProps) {

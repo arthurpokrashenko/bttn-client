@@ -16,6 +16,11 @@ export default (state = initialState, action: TAction) => {
         ...state,
         isConnected: false,
       };
+    case 'ws/CONNECT_TO_SOCKET_CLOSED':
+      return {
+        ...state,
+        isConnected: false,
+      };
     default:
       return state;
   }
