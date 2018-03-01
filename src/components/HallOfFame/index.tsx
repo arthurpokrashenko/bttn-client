@@ -27,7 +27,7 @@ export interface IHallOfFameState {
 }
 
 const WINNER_HERO_TIMEOUT = 7 * 1000;
-const PROMO_ROTATION_INTERVAL = 5 * 1000;
+const PROMO_ROTATION_INTERVAL = 3 * 1000;
 
 class HallOfFame extends Component<IHallOfFameProps, IHallOfFameState> {
   private promoRotationTimer: NodeJS.Timer;
