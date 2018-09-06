@@ -83,7 +83,7 @@ npm start
 ## API статистики
 По следующим ссылкам от бекенда можно получить информацию о событиях:
 
-Все события за сегодня – http://localhost:8081/event/today
-Все события за все время – http://localhost:8081/event/all
-Все выигравшие кнопки за сегодня – http://localhost:8081/event/today/winners
-Все выигравшие кнопки за все время – http://localhost:8081/event/all/winners
+* Все события за сегодня – http://localhost:8081/event/today
+* Все события за все время – http://localhost:8081/event/all
+* Все выигравшие кнопки за сегодня – http://localhost:8081/event/today/winners
+* Все выигравшие кнопки за все время – http://localhost:8081/event/all/winners
